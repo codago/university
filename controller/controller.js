@@ -39,7 +39,6 @@ rl.on('line', (line) => {
                 temp.push(line.trim())
             }
         }
-
         rl.setPrompt("password : ");
         rl.prompt();
         count++;
@@ -60,7 +59,7 @@ rl.on('line', (line) => {
                     rl.setPrompt("masukkan salah satu no. dari opsi diatas: ");
                     rl.prompt();
                     count++;
-                } else if(data.length === 0){
+                } else if (data.length === 0) {
                     console.log("username or password not found ! please try again !")
                     rl.setPrompt("username : ");
                     rl.prompt();
@@ -76,7 +75,7 @@ rl.on('line', (line) => {
             temp = []
         }
     } else if (count === 3) {
-        if (line.trim() === "1") {  
+        if (line.trim() === "1") {
             opsiMenu = "mahasiswa";
             View.reset_board();
             count++
@@ -558,24 +557,34 @@ rl.on('line', (line) => {
             dataBaru = [];
         } else if (opsiMenu === "kontrak") {
             View.reset_board();
-            dataBaru.push(line.trim());
-            rl.setPrompt("ID dosen : ");
-            rl.prompt();
-            count++;
+            Dosen.daftarDosen(function (data) {
+                View.printDaftarDosen(data);
+                dataBaru.push(line.trim());
+                rl.setPrompt("ID dosen : ");
+                rl.prompt();
+                count++;
+            })
+
         }
     } else if (count === 7) {
         if (opsiMenu === "mahasiswa") {
             View.reset_board();
-            dataBaru.push(line.trim());
-            rl.setPrompt("jurusan : ");
-            rl.prompt();
-            count++;
+            Jurusan.daftarJurusan(function (data) {
+                View.printDaftarJurusan(data);
+                rl.setPrompt("jurusan : ");
+                rl.prompt();
+                dataBaru.push(line.trim());
+                count++;
+            })
         } else if (opsiMenu === "kontrak") {
             View.reset_board();
-            dataBaru.push(line.trim());
-            rl.setPrompt("ID mahasiswa : ");
-            rl.prompt();
-            count++;
+            Mahasiswa.daftarMahasiswa(function (data) {
+                View.printDaftarMahasiswa(data);
+                dataBaru.push(line.trim());
+                rl.setPrompt("ID mahasiswa : ");
+                rl.prompt();
+                count++;
+            })
         }
     } else if (count === 8) {
         if (opsiMenu === "mahasiswa") {
@@ -594,10 +603,14 @@ rl.on('line', (line) => {
             dataBaru = [];
         } else if (opsiMenu === "kontrak") {
             View.reset_board();
-            dataBaru.push(line.trim());
-            rl.setPrompt("ID matakuliah : ");
-            rl.prompt();
-            count++;
+            Matakuliah.daftarMatakuliah(function (data) {
+                View.printDaftarMatakuliah(data);
+                dataBaru.push(line.trim());
+                rl.setPrompt("ID matakuliah : ");
+                rl.prompt();
+                count++;
+            })
+
         }
     } else if (count === 9) {
         View.reset_board();
@@ -614,10 +627,7 @@ rl.on('line', (line) => {
 
         dataBaru = [];
     }
-
-
-    // rl.prompt();
-
+rl.prompt();
 
 }).on('close', () => {
     console.log('Have a great day!');
