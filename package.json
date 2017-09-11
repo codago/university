@@ -1,0 +1,23 @@
+{
+  "name": "university",
+  "version": "1.0.0",
+  "description": "challange #18",
+  "main": "university.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codago/university.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codago/university/issues"
+  },
+  "homepage": "https://github.com/codago/university#readme",
+  "dependencies": {
+    "cli-table": "^0.3.1",
+    "sqlite3": "^3.1.9"
+  }
+}
