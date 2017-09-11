@@ -8,8 +8,6 @@ let db = new sqlite3.Database("./db/university.db", function(err) {
   }
 });
 
-
-
 function accessDatabase(cb) {
   //special query for kontrakkuliah table
   const queryKontrakKuliah =
